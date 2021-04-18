@@ -4,6 +4,7 @@ import connectDB from "./config/db.js"
 import crypto from 'crypto';
 import userRoutes from "./routes/userRoutes.js";
 import weightRoutes from "./routes/weightRoutes.js";
+import goalRoutes from "./routes/goalRoutes.js";
 
 dotenv.config()
 
@@ -14,6 +15,7 @@ app.use(express.json())
 
 app.use('/api/users', userRoutes);
 app.use('/api/weight', weightRoutes);
+app.use('/api/goal', goalRoutes);
 
 // Generating Random Hash
 // var current_date = (new Date()).valueOf().toString();
