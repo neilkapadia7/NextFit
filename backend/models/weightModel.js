@@ -6,7 +6,7 @@ const userDetails = mongoose.Schema({
         required: true
     },
     date_of: {
-        type: Date,
+        type: String,
         required: true,
     }
 })
@@ -17,7 +17,7 @@ const weightSchema = mongoose.Schema({
         required: true,
         ref: 'User'
     },
-    weightData: userDetails
+    weightData: [userDetails]
 })
 
 const Weight = mongoose.model('Weight', weightSchema);

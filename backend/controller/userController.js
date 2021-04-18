@@ -1,4 +1,5 @@
 import User from '../models/userModel.js'
+import Weight from '../models/weightModel.js'
 import asyncHandler from 'express-async-handler'; 
 import {generateToken} from '../util/generateToken.js';
 
@@ -29,6 +30,8 @@ export const registerUser = asyncHandler( async (req, res) => {
             email: user.email,
             token: generateToken(user._id)
         })
+
+        await Weight.create({userId: user._id});
     }
 
     else {
