@@ -6,6 +6,7 @@ import userRoutes from "./routes/userRoutes.js";
 import weightRoutes from "./routes/weightRoutes.js";
 import goalRoutes from "./routes/goalRoutes.js";
 import workoutRoutes from "./routes/workoutRoutes.js";
+import calorieRoutes from "./routes/calorieRoutes.js";
 
 dotenv.config()
 
@@ -18,6 +19,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/weight', weightRoutes);
 app.use('/api/goal', goalRoutes);
 app.use('/api/workout', workoutRoutes);
+app.use('/api/calorie', calorieRoutes);
 
 // Generating Random Hash
 // var current_date = (new Date()).valueOf().toString();

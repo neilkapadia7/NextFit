@@ -1,5 +1,6 @@
 import User from '../models/userModel.js'
 import Weight from '../models/weightModel.js'
+import Calorie from '../models/caloieModel.js'
 import asyncHandler from 'express-async-handler'; 
 import {generateToken} from '../util/generateToken.js';
 
@@ -32,6 +33,7 @@ export const registerUser = asyncHandler( async (req, res) => {
         })
 
         await Weight.create({userId: user._id});
+        await Calorie.create({userId: user._id});
     }
 
     else {
