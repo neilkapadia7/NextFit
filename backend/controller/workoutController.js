@@ -12,7 +12,8 @@ export const addWorkout = asyncHandler(async (req, res) => {
 
     const {
         workoutInfo,
-        date_of
+        date_of,
+        workoutType
     } = req.body;
 
     const checkWorkout = await Workout.find({userId, date_of});
@@ -21,7 +22,8 @@ export const addWorkout = asyncHandler(async (req, res) => {
         const workout = new Workout({
             userId,
             workoutInfo,
-            date_of
+            date_of,
+            workoutType
         })
 
         const saveWorkout = await workout.save();

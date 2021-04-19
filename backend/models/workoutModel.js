@@ -19,12 +19,16 @@ const workoutSchema = mongoose.Schema({
             rep_range: {
                 type: String,
                 required: true
-            }
+            },
         }
     ],
     date_of: {
         type: String,
         required: true,
+    },
+    workoutType: {
+        type: String,
+        required: true
     }
 }, {
     timestamps: true
