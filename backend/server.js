@@ -69,8 +69,6 @@ app.get('/api/google', googleAuth);
 // })
 
 
-
-
 app.use('/api/users', userRoutes);
 app.use('/api/weight', weightRoutes);
 app.use('/api/goal', goalRoutes);
