@@ -13,7 +13,7 @@ export const protect = asyncHandler(async (req, res, next) => {
 
             console.log(decoded.id);
 
-            req.user = await User.findById(decoded.id).select('-password');
+            req.user = await User.findOne({id: decoded.id})
 
             console.log(req.user);
 

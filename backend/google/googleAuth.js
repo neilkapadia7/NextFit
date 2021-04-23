@@ -32,16 +32,29 @@ export const googleAuth = async (req, res) => {
             }
         ); 
 
-        const user = new User(resp.data);
+        const user = await User.findOne({id: resp.data.id});
         
-        await user.save()
-        
-        console.log('Response Data : ', resp.data)
-        const token = jwt.sign({id: resp.data.id}, process.env.JWT_SECRET, {expiresIn: '20d'});
-        console.log('Signed JWT Token', token)
+        if(user) {
+            console.log('User Login')
+            const token = jwt.sign({id: resp.data.id}, process.env.JWT_SECRET, {expiresIn: '20d'});
+            // res.json(token)
+            const __dirname = path.resolve()
+            res.sendFile(path.resolve(__dirname, 'backend', 'views', 'loggedIn.html'))
+        }
+        else {
+            console.log('New User')
+            const newUser = new User(resp.data);
 
-      const __dirname = path.resolve()
-      res.sendFile(path.resolve(__dirname, 'backend', 'views', 'loggedIn.html'))
+            await newUser.save()
+            
+            console.log('Response Data : ', resp.data)
+            const token = jwt.sign({id: resp.data.id}, process.env.JWT_SECRET, {expiresIn: '20d'});
+            // res.json(token)
+            console.log('Signed JWT Token', token)
+
+            const __dirname = path.resolve()
+            res.sendFile(path.resolve(__dirname, 'backend', 'views', 'loggedIn.html'))
+        }
 
     } catch (error) {
         console.error(`Failed to fetch user`);
