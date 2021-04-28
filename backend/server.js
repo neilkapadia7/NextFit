@@ -6,7 +6,7 @@ import weightRoutes from "./routes/weightRoutes.js";
 import goalRoutes from "./routes/goalRoutes.js";
 import workoutRoutes from "./routes/workoutRoutes.js";
 import calorieRoutes from "./routes/calorieRoutes.js";
-import refreshToken from "./auth/refreshToken.js";
+import {refreshToken} from "./auth/refreshToken.js";
 import {googleAuth} from './google/googleAuth.js'
 import path from 'path';
 import querystring from "querystring";

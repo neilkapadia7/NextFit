@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-export const createRefreshToken = (id, tokenVersion) => {
+export const createRefreshToken = async (id, tokenVersion) => {
     await User.findByIdAndUpdate({id}, {$inc: {tokenVersion: 1}});
 
     const token = jwt.sign({
@@ -11,6 +11,6 @@ export const createRefreshToken = (id, tokenVersion) => {
     );
 }
 
-export const createRefreshToken = (id) => {
+export const createAcessToken = (id) => {
     const token = jwt.sign({id}, process.env.JWT_SECRET, {expiresIn: '40m'});
 }

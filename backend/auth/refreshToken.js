@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
-import sendRefreshToken from './sendRefreshToken.js'
-import createRefreshToken from './createToken.js'
+import {sendRefreshToken} from './sendRefreshToken.js'
+import {createRefreshToken} from './createToken.js'
 import User from '../models/userModel.js';
 
 export const refreshToken = async (req, res) => {
