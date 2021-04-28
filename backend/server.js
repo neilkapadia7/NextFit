@@ -6,6 +6,7 @@ import weightRoutes from "./routes/weightRoutes.js";
 import goalRoutes from "./routes/goalRoutes.js";
 import workoutRoutes from "./routes/workoutRoutes.js";
 import calorieRoutes from "./routes/calorieRoutes.js";
+import refreshToken from "./auth/refreshToken.js";
 import {googleAuth} from './google/googleAuth.js'
 import path from 'path';
 import querystring from "querystring";
@@ -19,8 +20,6 @@ connectDB();
 
 app.use(express.json())
 
-const redirectURL = 'http://localhost:5000/api/google'
-
 app.use(cookieParser());
 
 app.use(
@@ -31,6 +30,8 @@ app.use(
     credentials: true,
   })
 );
+
+const redirectURL = 'http://localhost:5000/api/google'
 
 app.get('/auth/google/url', (req, res) => {
   const rootUrl = 'https://accounts.google.com/o/oauth2/v2/auth';
@@ -74,6 +75,7 @@ app.use('/api/weight', weightRoutes);
 app.use('/api/goal', goalRoutes);
 app.use('/api/workout', workoutRoutes);
 app.use('/api/calorie', calorieRoutes);
+app.use('/api/refresh_token', refreshToken)
 
 const __dirname = path.resolve()
 app.get('/', (req, res) =>
