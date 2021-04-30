@@ -1,9 +1,14 @@
-
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+import Login from './screens/UnAuth/Login';
+import Home from './screens/Home'
 
 function App() {
   return (
     <div className="App">
-      <a href='http://localhost:5000/auth/google/url'>Login</a>
+      <Router>
+        <Route path='/' component={Login} exact/>
+        <Route path='/home' component={Home} exact />
+      </Router>
     </div>
   );
 }

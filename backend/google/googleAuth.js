@@ -1,8 +1,8 @@
 import {getTokens} from './getTokens.js'
 import axios from 'axios';
 import User from '../models/userModel.js'
-import jwt from 'jsonwebtoken'
-import path from 'path';
+import {sendRefreshToken} from '../auth/sendRefreshToken.js';
+import {createAcessToken, createRefreshToken} from '../auth/createToken.js'
 
 export const googleAuth = async (req, res) => {
     const redirectURL = 'http://localhost:5000/api/google'
@@ -21,40 +21,43 @@ export const googleAuth = async (req, res) => {
       
           console.log('ID Token : ',id_token, '  Access Token: ', access_token)
 
+          res.json({googleToken: access_token});
 
-        const resp = await axios
-        .get(
-            `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${access_token}`,
-            {
-                headers: {
-                    Authorization: `Bearer ${id_token}`,
-                },
-            }
-        ); 
 
-        const user = await User.findOne({id: resp.data.id});
+        // const resp = await axios
+        // .get(
+        //     `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${access_token}`,
+        //     {
+        //         headers: {
+        //             Authorization: `Bearer ${id_token}`,
+        //         },
+        //     }
+        // ); 
+
+        // const user = await User.findOne({id: resp.data.id});
         
-        if(user) {
-            console.log('User Login')
-            const token = jwt.sign({id: resp.data.id}, process.env.JWT_SECRET, {expiresIn: '20d'});
-            // res.json(token)
-            const __dirname = path.resolve()
-            res.sendFile(path.resolve(__dirname, 'backend', 'views', 'loggedIn.html'))
-        }
-        else {
-            console.log('New User')
-            const newUser = new User(resp.data);
+        // if(user) {
+        //     console.log('User Login!!!!!')
 
-            await newUser.save()
+        //     // Tokens
+        //     await sendRefreshToken(res, createRefreshToken())
+
+        //     res.redirect('http://localhost:3000/home').json({accessToken: createAcessToken(resp.data.id)});
+        // }
+        // else {
+        //     console.log('New User!!!!!')
+        //     const newUser = new User(resp.data);
+        //     await newUser.save()
             
-            console.log('Response Data : ', resp.data)
-            const token = jwt.sign({id: resp.data.id}, process.env.JWT_SECRET, {expiresIn: '20d'});
-            // res.json(token)
-            console.log('Signed JWT Token', token)
+        //     console.log('Response Data : ', resp.data)
 
-            const __dirname = path.resolve()
-            res.sendFile(path.resolve(__dirname, 'backend', 'views', 'loggedIn.html'))
-        }
+        //     // Tokens Logic
+        //     await sendRefreshToken(res, createRefreshToken())
+        //     res.json({accessToken: createAcessToken(resp.data.id)});
+            
+        //     // Redirect
+        //     res.redirect('http://localhost:3000/home')
+        // }
 
     } catch (error) {
         console.error(`Failed to fetch user`);
