@@ -1,5 +1,8 @@
 node_modules
 /node_modules
 /frontend/node_modules
+/frontend/.env
 
+/.gitignore
+.gitignore
 .env

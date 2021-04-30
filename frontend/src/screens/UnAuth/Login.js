@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react'
 
+import {Link} from 'react-router-dom'
+
 const Login = () => {
     useEffect(() => {
         console.log(process.env.GOOGLE_CLIENT)
@@ -7,7 +9,7 @@ const Login = () => {
 
     return (
         <div>
-            <a href='http://localhost:5000/auth/google/url'>Login</a>
+            <Link to='/login'>Login</Link>
         </div>
     )
 }

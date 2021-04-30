@@ -10,7 +10,7 @@ const initialState = {
 }
 
 const reducers = combineReducers({
-    gooogle: googleSignReducer
+    google: googleSignReducer
 })
 
 
