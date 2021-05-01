@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {getTokens} from './getTokens'
 
-export const userSignIn = async (code) => {
+export const googleSignIn = async (code) => {
     
     const redirectURL = 'http://localhost:3000/redirect'
 
@@ -34,7 +34,7 @@ export const userSignIn = async (code) => {
     
 }
 
-export const userSignInBack = async (data) => {
+export const userSignIn = async (data) => {
     try {
         const config = {
             headers: {
@@ -45,7 +45,7 @@ export const userSignInBack = async (data) => {
         const res = await axios.post('/api/users/login', data,  config )
     
         console.log('Backend Res :::', res)
-        return res.data;
+        return res.data.accessToken;
             
     } catch (err) {
         console.log(err)

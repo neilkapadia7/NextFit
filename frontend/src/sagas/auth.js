@@ -11,16 +11,16 @@ export function* userSignInSaga(param) {
     }
 
     try {
-        const response = yield call(AuthService.userSignIn, param.code);
+        const response = yield call(AuthService.googleSignIn, param.code);
         // if(response) {
           console.log('Response SAGA:::', response)
         // }
 
-        yield put(AuthActions.userSignInResult(response.data))
+        yield put(AuthActions.googleSignInResult(response.data))
 
-        const token = yield call(AuthService.userSignInBack, response.data);
+        const token = yield call(AuthService.userSignIn, response.data);
 
-        console.log(token)
+        yield put(AuthActions.userSignInResult(token))
     
       } catch (error) {
           console.log(error)

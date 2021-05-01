@@ -1,4 +1,4 @@
-import {GOOGLE_SIGNIN, GET_GOOGLE_TOKEN, GOOGLE_SIGNIN_RESULT} from '../constants/authConstants'
+import {GOOGLE_SIGNIN, GET_GOOGLE_TOKEN, GOOGLE_SIGNIN_RESULT, USER_SIGNIN} from '../constants/authConstants'
 
 export const userSignIn = (code) => {
     return {
@@ -7,9 +7,18 @@ export const userSignIn = (code) => {
     }
 }
 
-export const userSignInResult = (payload) => {
+export const googleSignInResult = (payload) => {
     return {
         type: GOOGLE_SIGNIN_RESULT,
+        payload
+    }
+}
+
+export const userSignInResult = (payload) => {
+    localStorage.setItem('token', payload);
+
+    return {
+        type: USER_SIGNIN,
         payload
     }
 }
