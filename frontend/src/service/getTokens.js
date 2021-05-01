@@ -24,7 +24,6 @@ export const getTokens = ({
             },
         })
         .then((res) =>{ 
-            console.log('res')
             return res.data
         })
         .catch((error) => {

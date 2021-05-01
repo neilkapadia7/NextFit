@@ -6,6 +6,7 @@ export const googleSignReducer = (state = {isLoggedIn: false}, action) => {
           return {
             ...state,
             loading: true,
+            isLoggedIn: false,
             error: null
           }
         case GOOGLE_SIGNIN_RESULT:

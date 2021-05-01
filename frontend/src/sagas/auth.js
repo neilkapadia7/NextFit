@@ -10,13 +10,11 @@ export function* userSignInSaga(param) {
       message: 'Could not fetch data'
     }
 
-    console.log(param)
-
     try {
         const response = yield call(AuthService.userSignIn, param.code);
-        if(response) {
-          console.log('Response', response)
-        }
+        // if(response) {
+          console.log('Response SAGA:::', response)
+        // }
 
         yield put(AuthActions.userSignInResult(response.data))
 

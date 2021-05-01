@@ -3,7 +3,7 @@ import {getTokens} from './getTokens'
 
 export const userSignIn = async (code) => {
     
-    const redirectURL = 'http://localhost:3000/home'
+    const redirectURL = 'http://localhost:3000/redirect'
 
     try{
         const { id_token, access_token, refresh_token } = await getTokens({
@@ -24,7 +24,7 @@ export const userSignIn = async (code) => {
         ); 
 
 
-        console.log(resp)
+        console.log("RESPOSNE SERVICES ::: ", resp)
         return resp;
     }
     catch(err) {

@@ -1,19 +1,17 @@
 import React,{useEffect} from 'react'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {userSignIn} from '../actions/authActions'
 
 const Home = (props) => {
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(userSignIn(props.location.search.split('code=').pop().split('&')[0]))
-        console.log(props.location.search.split('code=').pop().split('&')[0])
-    }, []);
+    const google = useSelector(state => state.google)
+    const {loading, isLoggedIn} = google;
 
-    return (
-        <div>
-            Home Logged In User
-        </div>
+    return(
+        <>
+            <h1>You're Logged In</h1>
+        </>
     )
 }
 
