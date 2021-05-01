@@ -3,6 +3,8 @@ import Weight from '../models/weightModel.js'
 import Calorie from '../models/caloieModel.js'
 import asyncHandler from 'express-async-handler'; 
 import {generateToken} from '../util/generateToken.js';
+import {sendRefreshToken} from '../auth/sendRefreshToken.js';
+import {createAcessToken, createRefreshToken} from '../auth/createToken.js'
 
 /**
     @route POST api/users
@@ -44,34 +46,30 @@ export const registerUser = asyncHandler( async (req, res) => {
 });
 
 /**
-    @route POST api/users/Login
+    @route POST api/users/login
     @description Login User
 */ 
 export const loginUser  = asyncHandler(async (req, res) => {
-    const {email, password} = req.body;
+        
+    try {
 
-    const user = await User.findOne({email});
+        const user = await User.findOne({id: req.body.id});
+        
+        if(user) {
+            console.log('User Login!!!!!')
 
-    if(!user) {
-        res.status(404);
-        res.json({message: 'Invalid Email ID'});
-        throw new Error('Invalid Email ID')
-    } 
-
-    if(user && (await user.matchPassword(password))) {
-        res.json({
-            _id: user._id,
-            name: user.name,
-            email: user.email,
-            token: generateToken(user._id)
-        })
+            res.json({accessToken: createAcessToken(req.body.id)});
+        }
+        else {
+            console.log('New User!!!!!')
+            const newUser = new User(req.body);
+            await newUser.save()
+            res.json({accessToken: createAcessToken(newUser.id)});
+        }
+    } catch (err) {
+        res.json({message: 'Server Error'});
     }
-
-    else {
-        res.status(401)
-        res.json({message: 'Invalid Password'});
-        throw new Error('Invalid Password');    
-    }
+        
 })
 
 /**

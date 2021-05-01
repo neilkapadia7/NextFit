@@ -8,7 +8,6 @@ export const userSignIn = (code) => {
 }
 
 export const userSignInResult = (payload) => {
-    console.log('Action Payload :::' ,payload)
     return {
         type: GOOGLE_SIGNIN_RESULT,
         payload

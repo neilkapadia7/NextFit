@@ -1,15 +1,17 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/userModel.js'
 
-export const createRefreshToken = async (id, tokenVersion) => {
-    await User.findByIdAndUpdate({id}, {$inc: {tokenVersion: 1}});
+export const createRefreshToken = (id) => {
+    console.log('Refresh Triggered')
 
     const token = jwt.sign({
-            id, tokenVersion
+            id
         }, 
         process.env.JWT_REFRESH, 
         {expiresIn: '7d'}
     );
+
+    console.log('Refresh Token ::: ',token)
 
     return token;
 }

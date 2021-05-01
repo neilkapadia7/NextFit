@@ -34,3 +34,20 @@ export const userSignIn = async (code) => {
     
 }
 
+export const userSignInBack = async (data) => {
+    try {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+    
+        const res = await axios.post('/api/users/login', data,  config )
+    
+        console.log('Backend Res :::', res)
+        return res.data;
+            
+    } catch (err) {
+        console.log(err)
+    }
+}

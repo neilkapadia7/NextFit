@@ -18,6 +18,9 @@ export function* userSignInSaga(param) {
 
         yield put(AuthActions.userSignInResult(response.data))
 
+        const token = yield call(AuthService.userSignInBack, response.data);
+
+        console.log(token)
     
       } catch (error) {
           console.log(error)

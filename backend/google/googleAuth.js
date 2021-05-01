@@ -54,9 +54,6 @@ export const googleAuth = async (req, res) => {
         //     // Tokens Logic
         //     await sendRefreshToken(res, createRefreshToken())
         //     res.json({accessToken: createAcessToken(resp.data.id)});
-            
-        //     // Redirect
-        //     res.redirect('http://localhost:3000/home')
         // }
 
     } catch (error) {
