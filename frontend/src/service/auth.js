@@ -1,20 +1,17 @@
 import axios from 'axios'
 import {getTokens} from './getTokens'
 
-export const userSignIn = async (payload) => {
+export const userSignIn = async (code) => {
     
     const redirectURL = 'http://localhost:3000/home'
-    // const code = req.query.code;
 
     try{
-        const { id_token, access_token } = await getTokens({
-            // code,
-            clientId: process.env.GOOGLE_CLIENT,
-            clientSecret: process.env.GOOGLE_SECRET,
+        const { id_token, access_token, refresh_token } = await getTokens({
+            code,
+            clientId: process.env.REACT_APP_GOOGLE_CLIENT,
+            clientSecret: process.env.REACT_APP_GOOGLE_SECRET,
             redirectUri: redirectURL,
         });
-    
-        console.log('ID Token : ',id_token, '  Access Token: ', access_token)
 
         const resp = await axios
         .get(
@@ -26,7 +23,9 @@ export const userSignIn = async (payload) => {
             }
         ); 
 
+
         console.log(resp)
+        return resp;
     }
     catch(err) {
         console.log(`Failed to fetch user`);

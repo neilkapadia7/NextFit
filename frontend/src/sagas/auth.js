@@ -1,29 +1,25 @@
 import { call, put, takeLatest, all, select} from 'redux-saga/effects'
 import {GET_GOOGLE_TOKEN, GOOGLE_SIGNIN} from '../constants/authConstants'
 import * as AuthService from '../service/auth'
+import * as AuthActions from '../actions/authActions'
 
-export function* userSignInSaga() {
+export function* userSignInSaga(param) {
+
+    let payload = {
+      status:false,
+      message: 'Could not fetch data'
+    }
+
+    console.log(param)
+
     try {
-        const response = yield call(AuthService.userSignIn);
-        if (response.status === 200) {
-          if (response.data.status === true){
-        //   localStorage.setItem('utoken', response.data.data.token)
-        //   payload = {
-        //     status: true,
-        //     message: 'Success'
-        //   }
-            console.log('Saga Working ::', response.data)
+        const response = yield call(AuthService.userSignIn, param.code);
+        if(response) {
+          console.log('Response', response)
         }
-      }
-      
-    //   if (!payload.status){
-    //       payload = {
-    //         ...payload,
-    //         message: response.data.message
-    //       }
-    //     }
-    
-        // yield put(authAction.userSignInResult({...payload}))
+
+        yield put(AuthActions.userSignInResult(response.data))
+
     
       } catch (error) {
           console.log(error)
