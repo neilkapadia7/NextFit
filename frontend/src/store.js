@@ -6,9 +6,13 @@ import rootSaga from './sagas'
 import {userSignReducer} from './reducers/authReducer'
 
 const userInfoFromStorage = localStorage.getItem('token') ? localStorage.getItem('token') : null;
+const refreshTokenFromStorage = localStorage.getItem('refresh') ? localStorage.getItem('refresh') : null;
 
 const initialState = {
-    user: { token: userInfoFromStorage }
+    user: { 
+        token: userInfoFromStorage,  
+        refresh_token: refreshTokenFromStorage
+    }
 }
 
 const reducers = combineReducers({

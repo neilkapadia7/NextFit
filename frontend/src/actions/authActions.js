@@ -15,6 +15,7 @@ export const googleSignInResult = (payload) => {
 }
 
 export const googleInfo = (payload) => {
+    localStorage.setItem('refresh', payload.refresh_token);
     return {
         type: GET_GOOGLE_TOKENS,
         payload

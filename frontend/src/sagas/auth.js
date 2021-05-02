@@ -1,5 +1,5 @@
 import { call, put, takeLatest, all, select} from 'redux-saga/effects'
-import {GET_GOOGLE_TOKEN, GOOGLE_SIGNIN, REFRESH_GOOGLE_TOKENS} from '../constants/authConstants'
+import {GOOGLE_SIGNIN, REFRESH_GOOGLE_TOKENS} from '../constants/authConstants'
 import * as AuthService from '../service/auth'
 import * as AuthActions from '../actions/authActions'
 
