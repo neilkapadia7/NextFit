@@ -1,7 +1,7 @@
 import { ADD_WEIGHT, ADD_WEIGHT_INIT } from "../constants/weightConstants";
 
-export const weightReducer = (state = { weights: []}, action) => {
-    switch(action.payload) {
+export const weightReducer = (state = {loading: false, error: null, weights: []}, action) => {
+    switch (action.type) {
         case ADD_WEIGHT_INIT:
             return {
                 ...state,

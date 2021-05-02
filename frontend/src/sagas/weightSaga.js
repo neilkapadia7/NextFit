@@ -5,10 +5,13 @@ import { ADD_WEIGHT_INIT } from '../constants/weightConstants'
 
 export function* addWeightSaga (param) {
     try {
-        const response = yield call(WeightService.addWeight, param);
-        yield put(WeightActions.addWeight(response))
-    } catch (err) {
+        const response = yield call(WeightService.addWeight, param.payload);
+        if(response){
+            yield put(WeightActions.addWeight(response))
+        }
         
+    } catch (err) {
+        console.log(err);
     }
 
 }

@@ -64,20 +64,24 @@ export const loginUser  = asyncHandler(async (req, res) => {
                 email: user.email,
                 name: user.name,
                 picture: user.picture,
-                accessToken: createAcessToken(req.body.id)
+                accessToken: createAcessToken(user._id)
             });
         }
         else {
             console.log('New User!!!!!')
             const newUser = new User(req.body);
             await newUser.save()
+
+            await Weight.create({userId: newUser._id});
+            await Calorie.create({userId: newUser._id});
+
             res.status(200).json({
                 _id: newUser._id,
                 id: newUser.id,
                 email: newUser.email,
                 name: newUser.name,
                 picture: newUser.picture,
-                accessToken: createAcessToken(newUser.id)
+                accessToken: createAcessToken(newUser._id)
             });
         }
     } catch (err) {

@@ -11,11 +11,11 @@ export const protect = asyncHandler(async (req, res, next) => {
 
             const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-            console.log(decoded.id);
+            // console.log('Decoded ID :::' ,decoded.id);
 
-            req.user = await User.findOne({id: decoded.id})
+            req.user = await User.findOne({_id: decoded.id})
 
-            console.log(req.user);
+            // console.log(req.user);
 
             next();
 

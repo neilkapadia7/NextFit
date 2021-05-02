@@ -1,15 +1,15 @@
 import { ADD_WEIGHT, ADD_WEIGHT_INIT } from "../constants/weightConstants"
 
-export const addWeightInit = (weight) => {
+export const addWeightInit = (payload) => {
     return {
         type: ADD_WEIGHT_INIT,
-        weight
+        payload
     }
 }
 
-export const addWeight = (weight) => {
+export const addWeight = (payload) => {
     return {
         type: ADD_WEIGHT,
-        weight
+        payload
     }
 }
