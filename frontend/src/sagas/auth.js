@@ -1,5 +1,5 @@
 import { call, put, takeLatest, all, select} from 'redux-saga/effects'
-import {GET_GOOGLE_TOKEN, GOOGLE_SIGNIN} from '../constants/authConstants'
+import {GET_GOOGLE_TOKEN, GOOGLE_SIGNIN, REFRESH_GOOGLE_TOKENS} from '../constants/authConstants'
 import * as AuthService from '../service/auth'
 import * as AuthActions from '../actions/authActions'
 
@@ -39,8 +39,24 @@ export function* userSignInSaga(param) {
       }
 }
 
+export function* googleRefreshToken () {
+  try {
+    yield put(AuthActions.googleRefreshTokenLoading())
+
+    const res = yield call(AuthService.googleRefreshToken())
+
+    if(res) {
+      yield put(AuthActions.googleRefreshToken(res))
+    }
+
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export default function* actionWatcher() {
     yield all([
-        takeLatest(GOOGLE_SIGNIN, userSignInSaga)
+        takeLatest(GOOGLE_SIGNIN, userSignInSaga),
+        takeLatest(REFRESH_GOOGLE_TOKENS, googleRefreshToken)
     ])
 }

@@ -5,8 +5,8 @@ import {userSignIn} from '../actions/authActions'
 const Home = (props) => {
     const dispatch = useDispatch();
 
-    const google = useSelector(state => state.google)
-    const {loading, isLoggedIn} = google;
+    const user = useSelector(state => state.user)
+    const {loading, isLoggedIn} = user;
 
     return(
         <>

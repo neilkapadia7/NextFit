@@ -6,8 +6,6 @@ import rootSaga from './sagas'
 import {userSignReducer} from './reducers/authReducer'
 
 const userInfoFromStorage = localStorage.getItem('token') ? localStorage.getItem('token') : null;
-console.log('userInfoFromStorage :::', userInfoFromStorage)
-console.log('local :::', localStorage.getItem('token'))
 
 const initialState = {
     user: { token: userInfoFromStorage }
