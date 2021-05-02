@@ -1,6 +1,7 @@
 import React,{useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {userSignIn} from '../actions/authActions'
+import Weight from '../components/Weight/Weight';
 
 const Home = (props) => {
     const dispatch = useDispatch();
@@ -17,8 +18,7 @@ const Home = (props) => {
     return(
         <>
             <h1>You're Logged In</h1>
-
-            
+            <Weight />     
         </>
     )
 }
