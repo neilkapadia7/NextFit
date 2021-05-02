@@ -6,11 +6,19 @@ const Home = (props) => {
     const dispatch = useDispatch();
 
     const user = useSelector(state => state.user)
-    const {loading, isLoggedIn} = user;
+    const {loading, isLoggedIn, userInfo} = user;
+
+    useEffect(() => {
+        if(!userInfo) {
+            props.history.push('/');
+        }
+    }, [userInfo]);
 
     return(
         <>
             <h1>You're Logged In</h1>
+
+            
         </>
     )
 }

@@ -27,9 +27,9 @@ export function* userSignInSaga(param) {
               }
             ))
 
-          const token = yield call(AuthService.userSignIn, response.res.data);
+          const userInfo = yield call(AuthService.userSignIn, response.res.data);
 
-          yield put(AuthActions.userSignInResult(token))
+          yield put(AuthActions.userSignInResult(userInfo))
         }
         
     

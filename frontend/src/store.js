@@ -5,12 +5,12 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import rootSaga from './sagas'
 import {userSignReducer} from './reducers/authReducer'
 
-const userInfoFromStorage = localStorage.getItem('token') ? localStorage.getItem('token') : null;
+const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
 const refreshTokenFromStorage = localStorage.getItem('refresh') ? localStorage.getItem('refresh') : null;
 
 const initialState = {
     user: { 
-        token: userInfoFromStorage,  
+        userInfo: userInfoFromStorage,  
         refresh_token: refreshTokenFromStorage
     }
 }

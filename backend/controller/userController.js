@@ -58,16 +58,30 @@ export const loginUser  = asyncHandler(async (req, res) => {
         if(user) {
             console.log('User Login!!!!!')
 
-            res.status(200).json({accessToken: createAcessToken(req.body.id)});
+            res.status(200).json({
+                _id: user._id,
+                id: user.id,
+                email: user.email,
+                name: user.name,
+                picture: user.picture,
+                accessToken: createAcessToken(req.body.id)
+            });
         }
         else {
             console.log('New User!!!!!')
             const newUser = new User(req.body);
             await newUser.save()
-            res.status(200).json({accessToken: createAcessToken(newUser.id)});
+            res.status(200).json({
+                _id: newUser._id,
+                id: newUser.id,
+                email: newUser.email,
+                name: newUser.name,
+                picture: newUser.picture,
+                accessToken: createAcessToken(newUser.id)
+            });
         }
     } catch (err) {
-        res.status(400).json({message: 'Server Error', err: err});
+        res.status(401).json({message: 'Server Error', err: err});
         console.log(err)
     }
         
@@ -80,8 +94,10 @@ export const loginUser  = asyncHandler(async (req, res) => {
 export const getUserProfile = async (req, res) => {
     res.json({
         _id: req.user._id,
+        id: req.user.id,
         name: req.user.name,
         email: req.user.email,
+        picture: req.user.picture
     })
 };
 

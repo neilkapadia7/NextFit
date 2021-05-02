@@ -46,7 +46,7 @@ export const userSignIn = async (data) => {
         const res = await axios.post('/api/users/login', data,  config )
     
         console.log('Backend Res :::', res)
-        return res.data.accessToken;
+        return res.data;
             
     } catch (err) {
         console.log(err)

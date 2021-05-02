@@ -23,7 +23,7 @@ export const googleInfo = (payload) => {
 }
 
 export const userSignInResult = (payload) => {
-    localStorage.setItem('token', payload);
+    localStorage.setItem('userInfo', JSON.stringify(payload));
 
     return {
         type: USER_SIGNIN,

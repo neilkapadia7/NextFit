@@ -13,7 +13,7 @@ export const userSignReducer = (state = {isLoggedIn: false, loading: false, erro
           return {
             ...state,
             isLoggedIn: false,
-            userData: action.payload,
+            googleData: action.payload,
             loading: true,
             error: null
           }
@@ -30,7 +30,7 @@ export const userSignReducer = (state = {isLoggedIn: false, loading: false, erro
             loading: false,
             error: null,
             isLoggedIn: true,
-            token: action.payload
+            userInfo: action.payload
           }
         case REFRESH_GOOGLE_TOKENS_LOADING:
           return {
