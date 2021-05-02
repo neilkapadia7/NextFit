@@ -58,16 +58,17 @@ export const loginUser  = asyncHandler(async (req, res) => {
         if(user) {
             console.log('User Login!!!!!')
 
-            res.json({accessToken: createAcessToken(req.body.id)});
+            res.status(200).json({accessToken: createAcessToken(req.body.id)});
         }
         else {
             console.log('New User!!!!!')
             const newUser = new User(req.body);
             await newUser.save()
-            res.json({accessToken: createAcessToken(newUser.id)});
+            res.status(200).json({accessToken: createAcessToken(newUser.id)});
         }
     } catch (err) {
-        res.json({message: 'Server Error'});
+        res.status(400).json({message: 'Server Error', err: err});
+        console.log(err)
     }
         
 })

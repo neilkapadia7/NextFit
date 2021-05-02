@@ -1,7 +1,6 @@
 import React from 'react'
 import querystring from 'querystring';
 
-import {Link} from 'react-router-dom'
 
 const Login = () => {
     const redirectURL = 'http://localhost:3000/redirect';

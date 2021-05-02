@@ -19,5 +19,7 @@ export const createRefreshToken = (id) => {
 export const createAcessToken = (id) => {
     const token = jwt.sign({id}, process.env.JWT_SECRET, {expiresIn: '40m'});
 
+    console.log(token)
+
     return token;
 }

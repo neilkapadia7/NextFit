@@ -12,15 +12,26 @@ export function* userSignInSaga(param) {
 
     try {
         const response = yield call(AuthService.googleSignIn, param.code);
-        // if(response) {
+        
+        if(response) {
           console.log('Response SAGA:::', response)
-        // }
 
-        yield put(AuthActions.googleSignInResult(response.data))
+          yield put(AuthActions.googleSignInResult(response.res.data))
 
-        const token = yield call(AuthService.userSignIn, response.data);
+          yield put(
+            AuthActions.googleInfo(
+              { 
+                id_token: response.id_token, 
+                refresh_token : response.refresh_token,
+                access_token : response.access_token
+              }
+            ))
 
-        yield put(AuthActions.userSignInResult(token))
+          const token = yield call(AuthService.userSignIn, response.res.data);
+
+          yield put(AuthActions.userSignInResult(token))
+        }
+        
     
       } catch (error) {
           console.log(error)

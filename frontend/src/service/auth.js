@@ -13,7 +13,7 @@ export const googleSignIn = async (code) => {
             redirectUri: redirectURL,
         });
 
-        const resp = await axios
+        const res = await axios
         .get(
             `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${access_token}`,
             {
@@ -24,8 +24,8 @@ export const googleSignIn = async (code) => {
         ); 
 
 
-        console.log("RESPOSNE SERVICES ::: ", resp)
-        return resp;
+        console.log("RESPOSNE SERVICES ::: ", res)
+        return {res, id_token, access_token, refresh_token };
     }
     catch(err) {
         console.log(`Failed to fetch user`);

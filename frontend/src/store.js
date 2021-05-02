@@ -3,14 +3,18 @@ import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension'
 import rootSaga from './sagas'
-import {googleSignReducer} from './reducers/authReducer'
+import {userSignReducer} from './reducers/authReducer'
+
+const userInfoFromStorage = localStorage.getItem('token') ? localStorage.getItem('token') : null;
+console.log('userInfoFromStorage :::', userInfoFromStorage)
+console.log('local :::', localStorage.getItem('token'))
 
 const initialState = {
-
+    user: { token: userInfoFromStorage }
 }
 
 const reducers = combineReducers({
-    google: googleSignReducer
+    user: userSignReducer
 })
 
 

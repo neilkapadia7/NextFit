@@ -1,6 +1,6 @@
-import {GOOGLE_SIGNIN, GET_GOOGLE_TOKEN, GOOGLE_SIGNIN_RESULT, USER_SIGNIN} from '../constants/authConstants'
+import {GOOGLE_SIGNIN, GET_GOOGLE_TOKENS, GOOGLE_SIGNIN_RESULT, USER_SIGNIN} from '../constants/authConstants'
 
-export const googleSignReducer = (state = {isLoggedIn: false}, action) => {
+export const userSignReducer = (state = {isLoggedIn: false, loading: false, error: null, token: null}, action) => {
     switch (action.type) {
         case GOOGLE_SIGNIN:
           return {
@@ -17,12 +17,20 @@ export const googleSignReducer = (state = {isLoggedIn: false}, action) => {
             loading: true,
             error: null
           }
+        case GET_GOOGLE_TOKENS:
+          return {
+            ...state,
+            id_token: action.payload.id_token,
+            refresh_token: action.payload.refresh_token,
+            access_token: action.payload.access_token
+          }
         case USER_SIGNIN: 
           return {
             ...state,
             loading: false,
             error: null,
             isLoggedIn: true,
+            token: action.payload
           }
         default:
             return state;
