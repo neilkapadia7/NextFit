@@ -41,10 +41,10 @@ export const addWeight = asyncHandler(async (req, res) => {
     
         console.log('Weight Result :::', weightResult)
 
-        if(weightResult) {
-            res.status(400).json({ message: 'Weight for the day already added' })
-        }
-        else {
+        // if(weightResult) {
+        //     res.status(400).json({ message: 'Weight for the day already added' })
+        // }
+        // else {
             const weightData = {
                 weight,
                 date_of
@@ -53,7 +53,7 @@ export const addWeight = asyncHandler(async (req, res) => {
             weights.weightData.push(weightData);
         
             await weights.save()
-            res.status(201).json({ weight, date_of })    
-        }
+            res.status(201).json({ weightData: weights.weightData })    
+        // }
     }    
 });
