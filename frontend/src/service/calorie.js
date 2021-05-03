@@ -21,6 +21,7 @@ import axios from 'axios'
 // }
 
 export const addCalorie = async (data) => {
+    console.log('Calorie Service :::', data)
     try {
         var state = store.getState();
         const {user: {userInfo: {accessToken}}} = state

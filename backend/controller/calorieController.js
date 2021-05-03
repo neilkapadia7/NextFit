@@ -43,10 +43,10 @@ export const addCalories = asyncHandler(async (req, res) => {
                 date_of
             }
         
-            weights.calorieData.push(calorieData);
+            calories.calorieData.push(calorieData);
         
-            await weights.save()
-            res.status(201).json({ message: 'Calorie added' })
+            await calories.save()
+            res.status(201).json({ calorieData: calories.calorieData })
         }
     }
 });

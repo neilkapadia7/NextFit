@@ -5,6 +5,7 @@ import * as calorieActions from '../actions/calorieAction'
 
 export function* addCalorieSaga(param) {
     try {
+        console.log('Calorie Saga')
         const response = yield call(calorieServices.addCalorie, param.payload);
         if(response) {
             yield put(calorieActions.addCalorie(response));

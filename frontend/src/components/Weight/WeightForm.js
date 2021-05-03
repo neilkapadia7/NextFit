@@ -13,7 +13,7 @@ const WeightForm = () => {
         const date_of = Moment().format('DD-MM-YYYY')
         dispatch(
             addWeightInit({
-                weight: parseFloat(weight).toFixed(2),
+                calorie: parseFloat(weight).toFixed(2),
                 date_of
             })
         )
