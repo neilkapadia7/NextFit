@@ -1,0 +1,4 @@
+export const ADD_CALORIE_INIT = 'ADD_CALORIE_INIT';
+export const ADD_CALORIE = 'ADD_CALORIE';
+export const GET_CALORIE = 'GET_CALORIE';
+export const GET_CALORIE_INIT = 'GET_CALORIE_INIT';

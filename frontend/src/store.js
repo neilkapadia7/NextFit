@@ -5,6 +5,7 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import rootSaga from './sagas'
 import {userSignReducer} from './reducers/authReducer'
 import {weightReducer} from './reducers/weightReducer'
+import {calorieReducer} from './reducers/calorieReducer'
 
 const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
 const refreshTokenFromStorage = localStorage.getItem('refresh') ? localStorage.getItem('refresh') : null;
@@ -18,7 +19,8 @@ const initialState = {
 
 const reducers = combineReducers({
     user: userSignReducer,
-    weight: weightReducer
+    weight: weightReducer,
+    calorie: calorieReducer,
 })
 
 

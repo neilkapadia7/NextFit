@@ -26,19 +26,27 @@ export const addCalories = asyncHandler(async (req, res) => {
         res.json({message: 'Unauthorized to Add Calorie'});
         throw new Error('Unauthorized to Add Calorie')
     }
+    else {
+        const {
+            calorie,
+            date_of
+        } = req.body;
+    
+        const calorieResult = calories.calorieData.some(data => data.date_of == date_of)
 
-    const {
-        calorie,
-        date_of
-    } = req.body;
-
-    const calorieData = {
-        calorie,
-        date_of
-     }
-
-     weights.calorieData.push(calorieData);
-
-     await weights.save()
-     res.status(201).json({ message: 'Weight added' })
+        if(calorieResult) {
+            res.status(400).json({ message: 'Calories for the day already added' })
+        }
+        else {
+            const calorieData = {
+                calorie,
+                date_of
+            }
+        
+            weights.calorieData.push(calorieData);
+        
+            await weights.save()
+            res.status(201).json({ message: 'Calorie added' })
+        }
+    }
 });
