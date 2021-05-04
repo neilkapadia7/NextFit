@@ -1,7 +1,7 @@
 import { ADD_CALORIE, ADD_CALORIE_INIT, GET_CALORIE, GET_CALORIE_INIT } from "../constants/calorieConstants"
 
 
-export const calorieReducer = (state = {loading: false, error: null, calories: null, listLoading: false}, action) => {
+export const calorieReducer = (state = {loading: false, error: null, calories: [], listLoading: false}, action) => {
     switch (action.type) {
         case ADD_CALORIE_INIT:
             return {
@@ -23,6 +23,7 @@ export const calorieReducer = (state = {loading: false, error: null, calories: n
                 error: null
             }
         case GET_CALORIE:
+            console.log('reducer Payload:::', action.payload)
             return {
                 ...state,
                 listLoading: false,

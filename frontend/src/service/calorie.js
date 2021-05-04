@@ -1,24 +1,25 @@
 import store from '../store'
 import axios from 'axios'
 
-// export const getWeight = async () => {
-//     try {
-//         var state = store.getState();
-//         const {user: {userInfo: {accessToken}}} = state
+export const getCalorie = async () => {
+    try {
+        var state = store.getState();
+        const {user: {userInfo: {accessToken}}} = state
 
-//         const config = {
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 Authorization: `Bearer ${accessToken}`
-//             }
-//         }
-//         const res = await axios.get('/api/weight', config);
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${accessToken}`
+            }
+        }
+        const res = await axios.get('/api/calorie', config);
+        console.log('GET CALORIE ::', res)
+        return res.data
 
-//         return res.data
-//     } catch (err) {
-//         console.log(err)
-//     }
-// }
+    } catch (err) {
+        console.log(err)
+    }
+}
 
 export const addCalorie = async (data) => {
     console.log('Calorie Service :::', data)
