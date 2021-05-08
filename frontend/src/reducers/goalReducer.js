@@ -14,7 +14,7 @@ export const goalReducer = (state = {loading: false, error: null, goal: [], list
                 ...state,
                 loading: false,
                 error: null,
-                goal: action.payload
+                goal: [...state.goal, action.payload]
             }
         case GET_GOAL_INIT:
             return {
