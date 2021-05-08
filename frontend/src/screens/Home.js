@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {userSignIn} from '../actions/authActions'
 import Weight from '../components/Weight/Weight';
 import Calorie from '../components/Calorie/Calorie';
+import Goal from '../components/Goal/Goal';
 
 const Home = (props) => {
     const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const Home = (props) => {
             <h1>You're Logged In</h1>
             <Weight />     
             <Calorie />     
+            <Goal />     
         </>
     )
 }
