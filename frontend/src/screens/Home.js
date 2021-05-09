@@ -21,9 +21,9 @@ const Home = (props) => {
     return(
         <>
             <h1>You're Logged In</h1>
-            {/* <Weight />     
+            <Weight />     
             <Calorie />     
-            <Goal />      */}
+            <Goal />     
             <Workout />     
         </>
     )
