@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const userDetails = mongoose.Schema({
+const workoutDetails = mongoose.Schema({
     weight: {
         type: Number,
         required: true
@@ -17,7 +17,7 @@ const weightSchema = mongoose.Schema({
         required: true,
         ref: 'User'
     },
-    weightData: [userDetails]
+    weightData: [workoutDetails]
 })
 
 const Weight = mongoose.model('Weight', weightSchema);

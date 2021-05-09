@@ -1,0 +1,4 @@
+export const ADD_WORKOUT_INIT = 'ADD_WORKOUT_INIT';
+export const ADD_WORKOUT = 'ADD_WORKOUT';
+export const GET_WORKOUT = 'GET_WORKOUT';
+export const GET_WORKOUT_INIT = 'GET_WORKOUT_INIT';

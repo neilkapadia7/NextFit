@@ -7,6 +7,7 @@ import {userSignReducer} from './reducers/authReducer'
 import {weightReducer} from './reducers/weightReducer'
 import {calorieReducer} from './reducers/calorieReducer'
 import {goalReducer} from './reducers/goalReducer'
+import {workoutReducer} from './reducers/workoutReducer'
 
 const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null;
 const refreshTokenFromStorage = localStorage.getItem('refresh') ? localStorage.getItem('refresh') : null;
@@ -23,6 +24,7 @@ const reducers = combineReducers({
     weight: weightReducer,
     calorie: calorieReducer,
     goals: goalReducer,
+    workout: workoutReducer,
 })
 
 

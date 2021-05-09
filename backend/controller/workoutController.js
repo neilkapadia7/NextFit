@@ -16,9 +16,9 @@ export const addWorkout = asyncHandler(async (req, res) => {
         workoutType
     } = req.body;
 
-    const checkWorkout = await Workout.find({userId, date_of});
+    const checkWorkout = await Workout.findOne({userId, date_of});
 
-    if(checkWorkout.length === 0) {
+    if(!checkWorkout) {
         const workout = new Workout({
             userId,
             workoutInfo,
@@ -38,7 +38,7 @@ export const addWorkout = asyncHandler(async (req, res) => {
     }
 
     else {
-        res.status(400);
+        res.status(400).json({msg: 'Workout Already Added'});
         throw Error('Workout Already Added');
     }
 })

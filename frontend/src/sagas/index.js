@@ -3,6 +3,7 @@ import auth from './auth'
 import weight from './weightSaga'
 import calorie from './calorieSaga'
 import goal from './goalSaga'
+import workout from './workoutSaga'
 
 
 export default function* IndexSagas () {
@@ -11,5 +12,6 @@ export default function* IndexSagas () {
     weight(),
     calorie(),
     goal(),
+    workout(),
   ])
 }

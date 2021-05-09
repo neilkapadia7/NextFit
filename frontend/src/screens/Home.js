@@ -4,6 +4,7 @@ import {userSignIn} from '../actions/authActions'
 import Weight from '../components/Weight/Weight';
 import Calorie from '../components/Calorie/Calorie';
 import Goal from '../components/Goal/Goal';
+import Workout from '../components/Workout/Workout';
 
 const Home = (props) => {
     const dispatch = useDispatch();
@@ -20,9 +21,10 @@ const Home = (props) => {
     return(
         <>
             <h1>You're Logged In</h1>
-            <Weight />     
+            {/* <Weight />     
             <Calorie />     
-            <Goal />     
+            <Goal />      */}
+            <Workout />     
         </>
     )
 }
