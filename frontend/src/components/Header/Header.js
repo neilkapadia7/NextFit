@@ -4,6 +4,7 @@ import {LinkContainer} from 'react-router-bootstrap';
 import {useDispatch, useSelector} from 'react-redux'
 import {logout} from '../../actions/authActions'
 import querystring from 'querystring';
+import './bootstrap.min.css'
 
 const Header = () => {
     const redirectURL = 'http://localhost:3000/redirect';
@@ -36,7 +37,7 @@ const Header = () => {
 
     return (
         <header>
-            <Navbar>
+            <Navbar  bg="light" variant="light" expand="lg" collapseOnSelect>
                 <Container>
                     <LinkContainer to='/'>
                         <Navbar.Brand>NextFit</Navbar.Brand>
@@ -57,8 +58,8 @@ const Header = () => {
                             </NavDropdown>
                         ) : (
                         <NavItem>
-                            <a href={`${rootUrl}?${querystring.stringify(options)}`}>
-                                Sign In/ Register             
+                            <a href={`${rootUrl}?${querystring.stringify(options)}`} className='nav-link'>
+                                Sign In / Register             
                             </a>
                         </NavItem>
                         )}

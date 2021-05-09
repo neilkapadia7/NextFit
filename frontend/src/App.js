@@ -10,9 +10,11 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-        <Route path='/' component={Login} exact/>
-        <Route path='/home' component={Home} exact />
-        <Route path='/redirect' component={Redirect} exact />
+        <div className='container'>
+          <Route path='/' component={Login} exact/>
+          <Route path='/home' component={Home} exact />
+          <Route path='/redirect' component={Redirect} exact />
+        </div>
       </Router>
     </div>
   );

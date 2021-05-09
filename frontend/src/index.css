@@ -2,12 +2,108 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.unauth-header-div {
+  text-align: center;
+  margin: 50px auto;
+}
+.unauth-title {
+  font-size: 60px;
+  font-weight: 700;
+  color: #27272e;
+}
+.unauth-description {
+  font-size: 18px;
+  font-weight: 400;
+  color: #5a5a5a;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.unauth-3-sec {
+  width: 100%;
+  height: auto;
+  display: flex;
+}
+.unauth-sec {
+  height: 350px;
+  margin-bottom: 60px !important;
+  border-radius: 10px;
+  display: table;
+}
+.unauth-sec1 {
+  width: 48%;
+  background-color: #27272e;
+  margin: 0 1% 0 0;
+}
+.unauth-sec2 {
+  width: 24%;
+  background-color: #5956e9;
+  margin: 0 1% 0 1%;
+}
+.unauth-sec3 {
+  width: 24%;
+  background-color: #f1f1f5;
+  margin: 0 0 0 1%;
+}
+
+.unauth-sec3:hover {
+  box-shadow: 0 20px 30px #c2c2c296;
+  transition: 0.4s;
+}
+.unauth-card-container {
+  padding: 80px 30px;
+}
+.unauth-card-icon {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+}
+.unauth-card-icon i {
+  height: 60px;
+  width: 60px;
+  padding: 15px;
+}
+.unaut-card-title {
+  font-size: 20px;
+  font-weight: 700;
+  padding: 25px 0 0 0;
+}
+.unaut-card-description {
+  font-size: 16px;
+  font-weight: 400;
+  padding: 0 0 10px 0;
+}
+
+.unauth-bg-green {
+  background-color: #62e6ac;
+}
+.unauth-bg-black {
+  background-color: #27272e !important;
+}
+.unauth-bg-white {
+  background-color: #ffffff !important;
+}
+.unauth-white {
+  color: #ffffff !important;
+}
+.unauth-black {
+  color: #27272e !important;
+}
+.unauth-off-white {
+  color: #c7c7c7 !important;
+}
+.unauth-off-black {
+  color: #666666 !important;
+}
+.unauth-button {
+  padding: 7px 20px;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 14px;
+  margin: 20px 0;
 }
