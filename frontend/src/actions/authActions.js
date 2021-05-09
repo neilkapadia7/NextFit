@@ -45,6 +45,8 @@ export const googleRefreshToken = (payload) => {
 }
 
 export const logout = () => {
+    localStorage.removeItem('userInfo')
+    localStorage.removeItem('refresh')
     return {
         type: USER_LOGOUT,
     }
