@@ -1,4 +1,4 @@
-import {GOOGLE_SIGNIN, GET_GOOGLE_TOKENS, GOOGLE_SIGNIN_RESULT, USER_SIGNIN, GET_REFRESH_GOOGLE_TOKENS, REFRESH_GOOGLE_TOKENS_LOADING} from '../constants/authConstants'
+import {GOOGLE_SIGNIN, GET_GOOGLE_TOKENS, GOOGLE_SIGNIN_RESULT, USER_SIGNIN, GET_REFRESH_GOOGLE_TOKENS, REFRESH_GOOGLE_TOKENS_LOADING, USER_LOGOUT} from '../constants/authConstants'
 
 export const userSignIn = (code) => {
     return {
@@ -41,5 +41,11 @@ export const googleRefreshToken = (payload) => {
     return {
         type:  GET_REFRESH_GOOGLE_TOKENS,
         payload
+    }
+}
+
+export const logout = () => {
+    return {
+        type: USER_LOGOUT,
     }
 }
