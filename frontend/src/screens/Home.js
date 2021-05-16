@@ -5,6 +5,8 @@ import Weight from '../components/Weight/Weight';
 import Calorie from '../components/Calorie/Calorie';
 import Goal from '../components/Goal/Goal';
 import Workout from '../components/Workout/Workout';
+import {getMetricsForDays} from '../service/googleFit'
+
 
 const Home = (props) => {
     const dispatch = useDispatch();
@@ -16,11 +18,13 @@ const Home = (props) => {
         if(!userInfo) {
             props.history.push('/');
         }
+
+        getMetricsForDays(1,1)//
     }, [userInfo]);
 
     return(
         <>
-            <h1>You're Logged In</h1>
+
             <Weight />     
             <Calorie />     
             <Goal />     

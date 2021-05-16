@@ -1,9 +1,18 @@
-import React from 'react'
+import React,{useEffect} from 'react'
+import {useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 
 
-const Login = () => {
+const Login = (props) => {
     
+    const user = useSelector(state => state.user);
+    const {userInfo} = user
+
+    useEffect(() => {
+        if(userInfo !== null) {
+            props.history.push('/home')
+        }
+    }, [userInfo])
 
     return (
         <div>
